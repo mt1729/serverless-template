@@ -1,9 +1,46 @@
 service: surterra-serverless
 
+plugins:
+  - serverless-webpack
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      seed: true
+      migrate: true
+      inMemory: true
+    seed:
+      users:
+        sources:
+          - table: users
+            sources: [./routes/users/seed.json]
+
 provider:
   name: aws
   runtime: nodejs10.x
 
 functions:
-  hello:
-    handler: handler.hello
+  unmatchedRoute:
+    handler: routes/
+    events:
+      - http:
+          path: /{any+}
+          method: ANY
+          
+resources:
+  Resources:
+    locationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
