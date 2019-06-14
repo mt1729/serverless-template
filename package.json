@@ -1,0 +1,30 @@
+{
+  "name": "surterra-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "accept-language-parser": "^1.5.0",
+    "aws-sdk": "^2.475.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "jest": "^24.8.0",
+    "node-fetch": "^2.6.0",
+    "serverless": "^1.45.1",
+    "serverless-dynamodb-local": "^0.2.38",
+    "serverless-offline": "^5.3.3",
+    "serverless-webpack": "^5.3.1",
+    "webpack": "^4.34.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/serverless offline -s dev",
+    "debug": "export SLS_DEBUG=* && node --inspect=5858 ./node_modules/.bin/serverless offline -s dev",
+    "test": "ENDPOINT=http://localhost:3000 jest"
+  },
+  "author": "",
+  "license": "ISC"
+}

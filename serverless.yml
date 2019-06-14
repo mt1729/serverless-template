@@ -7,6 +7,8 @@ plugins:
 
 custom:
   dynamodb:
+    stages:
+      - dev
     start:
       seed: true
       migrate: true
@@ -14,27 +16,36 @@ custom:
     seed:
       users:
         sources:
-          - table: users
+          - table: users # TODO: - Populate from config
             sources: [./routes/users/seed.json]
 
 provider:
   name: aws
+  stage: ${opt:stage, 'dev'}
   runtime: nodejs10.x
 
 functions:
+  getUser:
+    handler: routes/users/handler.getUser
+    events:
+      - http:
+          path: users/{id}
+          method: get
+          cors: true
+
   unmatchedRoute:
-    handler: routes/
+    handler: routes/defaultHandler.unmatchedRoute
     events:
       - http:
           path: /{any+}
           method: ANY
-          
+
 resources:
   Resources:
     locationsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: users
+        TableName: users # TODO: - Populate from config
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
