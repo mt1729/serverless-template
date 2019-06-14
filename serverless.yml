@@ -1,4 +1,4 @@
-service: surterra-serverless
+service: serverless-boilerplate
 
 plugins:
   - serverless-webpack

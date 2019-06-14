@@ -1,5 +1,5 @@
 {
-  "name": "surterra-serverless",
+  "name": "serverless-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
