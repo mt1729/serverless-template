@@ -2,14 +2,14 @@
 
 // This is used for the sake of Jest testing with ECMA features
 module.exports = {
-    presets: [
-        [
-            '@babel/preset-env',
-            {
-                targets: {
-                    node: 'current',
-                },
-            },
-        ],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
+      },
     ],
+  ],
 };

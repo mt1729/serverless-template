@@ -32,7 +32,6 @@ functions:
           path: users/{id}
           method: get
           cors: true
-
   unmatchedRoute:
     handler: routes/defaultHandler.unmatchedRoute
     events:

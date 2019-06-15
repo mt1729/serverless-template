@@ -4,11 +4,11 @@ import acceptLanguageParser from 'accept-language-parser';
 const supportedLanguages = Object.keys(strings);
 
 export default (acceptLanguageHeader) => {
-    const locale = acceptLanguageParser.pick(
-        supportedLanguages,
-        acceptLanguageHeader,
-        { loose: true },
-    );
+  const locale = acceptLanguageParser.pick(
+    supportedLanguages,
+    acceptLanguageHeader,
+    { loose: true },
+  );
 
-    return strings[locale] || strings['en-US'];
+  return strings[locale] || strings['en-US'];
 };

@@ -5,19 +5,19 @@ import decorateLambda from '../../util/decorateLambda';
 import { OK, NOT_FOUND } from '../../util/statusCodes';
 
 export const getUser = decorateLambda(async (event, context) => {
-    const res = await dynamodb.get({
-        TableName: 'users', // TODO: - Get table name from config
-        Key: {
-            id: event.pathParameters.id,
-        },
-    }).promise();
+  const res = await dynamodb.get({
+    TableName: 'users', // TODO: - Get table name from config
+    Key: {
+      id: event.pathParameters.id,
+    },
+  }).promise();
 
-    if (res.Item) {
-        return { statusCode: OK, body: JSON.stringify(res.Item) }
-    } else {
-        return {
-            statusCode: NOT_FOUND,
-            body: formatErrors(context.localizedStrings.userMissing),
-        };
-    }
+  if (res.Item) {
+    return { statusCode: OK, body: JSON.stringify(res.Item) }
+  } else {
+    return {
+      statusCode: NOT_FOUND,
+      body: formatErrors(context.localizedStrings.userMissing),
+    };
+  }
 });
