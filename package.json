@@ -14,15 +14,15 @@
     "jest": "^24.8.0",
     "node-fetch": "^2.6.0",
     "serverless": "^1.45.1",
-    "serverless-dynamodb-local": "^1.0.2",
+    "serverless-dynamodb-local": "^0.2.37",
     "serverless-offline": "^5.3.3",
     "serverless-webpack": "^5.3.1",
     "webpack": "^4.34.0",
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "./node_modules/.bin/serverless offline -s dev",
-    "debug": "export SLS_DEBUG=* && node --inspect=5858 ./node_modules/.bin/serverless offline -s dev",
+    "start": "./node_modules/.bin/serverless dynamodb start && ./node_modules/.bin/serverless offline -s dev",
+    "debug": "export SLS_DEBUG=* && ./node_modules/.bin/serverless dynamodb start && node --inspect=5858 ./node_modules/.bin/serverless offline -s dev",
     "test": "ENDPOINT=http://localhost:3000 jest"
   },
   "author": "",

@@ -11,7 +11,7 @@ export default (lambda) => async (event, context) => {
 
   try {
     return await lambda(event, context);
-  } catch {
+  } catch (err) {
     return {
       statusCode: INTERNAL_SERVER_ERROR,
       body: formatErrors(localizedStrings.internalServerError),
