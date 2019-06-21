@@ -15,4 +15,4 @@ test('User exists', async () => {
 test('User does not exist', async () => {
   const res = await fetch(`${endpoint}/locations/matt-is-cool`);
   expect(res.status).toBe(NOT_FOUND); // :(
-})
+});
